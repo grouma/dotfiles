@@ -33,3 +33,7 @@ bindkey -M vicmd 'j' history-substring-search-down
 # Export path
 export PATH=$PATH:$HOME/.cabal/bin
 export ELM_HOME=/usr/local/lib/node_modules/elm/share
+
+# Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/base16-harmonic16.dark.sh"
+[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL

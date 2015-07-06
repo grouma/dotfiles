@@ -33,3 +33,8 @@ bindkey -M vicmd 'j' history-substring-search-down
 # Export path
 export PATH=$PATH:$HOME/.cabal/bin
 export ELM_HOME=/usr/local/lib/node_modules/elm/share
+export PATH=$PATH:/usr/local/go/bin
+export GOROOT=/usr/local/go
+export PATH=$PATH:$GOROOT/bin
+export GOPATH=$HOME/gopath
+export PATH=$GOPATH:$GOPATH/bin:$PATH

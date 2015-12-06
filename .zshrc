@@ -15,7 +15,6 @@ bindkey -v
 # Case insensitive searching, more detailed status line, and colors in less
 export LESS='-i -M -r'
 
-
 # bind UP and DOWN arrow keys
 zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
@@ -38,7 +37,3 @@ export GOROOT=/usr/local/go
 export PATH=$PATH:$GOROOT/bin
 export GOPATH=$HOME/gopath
 export PATH=$GOPATH:$GOPATH/bin:$PATH
-
-# Base16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell/base16-harmonic16.dark.sh"
-[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL

@@ -24,15 +24,19 @@ zstyle :completion::complete:git-checkout:argument-rest:headrefs command "git fo
 # Ignore files in CitC
 export G4NOTHAVEFILTER='(\.iml|\.idea|compass\.rb)'
 
-# Export Path
-export PATH=/usr/lib/google-dartlang/bin:${PATH}
+# Export Path 
+if [[ $PWD =~ "google3" ]]; then
+	export PATH=/usr/lib/google-dartlang/bin:${PATH}
+else
+	export PATH=/usr/lib/dart/bin:${PATH}
+fi
 export PATH=/usr/local/google/home/grouma/.local/bin:${PATH}
 export PATH=/usr/local/google/home/grouma/local/bin:${PATH}
 export PATH=/usr/local/google/home/grouma/depot_tools:${PATH}
 
 source /etc/bash_completion.d/g4d
-alias copybara='/google/data/ro/teams/copybara/copybara'
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-
+# Google3 Aliases 
+alias blaze-run='/google/src/head/depot/google3/devtools/blaze/scripts/blaze-run.sh'
+alias copybara='/google/data/ro/teams/copybara/copybara'

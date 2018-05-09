@@ -2,7 +2,12 @@
 export ZSH=/usr/local/google/home/grouma/.oh-my-zsh
 
 # Set name of the theme to load.
-ZSH_THEME="robbyrussell"
+ZSH_THEME="avit"
+
+TMOUT=1
+TRAPALRM() {
+	zle reset-prompt
+}
 
 # Load plugins
 plugins=(git history-substring-search tmux)
@@ -24,7 +29,7 @@ zstyle :completion::complete:git-checkout:argument-rest:headrefs command "git fo
 # Ignore files in CitC
 export G4NOTHAVEFILTER='(\.iml|\.idea|compass\.rb)'
 
-# Export Path 
+# Export Path
 if [[ $PWD =~ "google3" ]]; then
 	export PATH=/usr/lib/google-dartlang/bin:${PATH}
 else
@@ -33,10 +38,12 @@ fi
 export PATH=/usr/local/google/home/grouma/.local/bin:${PATH}
 export PATH=/usr/local/google/home/grouma/local/bin:${PATH}
 export PATH=/usr/local/google/home/grouma/depot_tools:${PATH}
+export PATH=/usr/local/google/home/grouma/flutter/bin:$PATH
 
 source /etc/bash_completion.d/g4d
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Google3 Aliases 
+# Google3 Aliases
 alias blaze-run='/google/src/head/depot/google3/devtools/blaze/scripts/blaze-run.sh'
 alias copybara='/google/data/ro/teams/copybara/copybara'
+alias pbr="pub run build_runner"

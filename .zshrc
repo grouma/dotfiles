@@ -56,3 +56,11 @@ fi
 
 # Dart Aliases
 alias pbr="pub run build_runner"
+
+# Git Aliases
+alias gbr="git branch | grep -v "master" | xargs git branch -D"
+
+# Google3 Aliases
+alias blaze-run='/google/src/head/depot/google3/devtools/blaze/scripts/blaze-run.sh'
+alias copybara='/google/data/ro/teams/copybara/copybara'
+alias show_platforms="blaze-bin/dart/tools/platforms/show_platforms"

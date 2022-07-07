@@ -1,33 +1,8 @@
-# Google3?
-if [ -d "/usr/local/google/home/grouma" ]; then
-  # Path to oh-my-zsh installation.
-  export ZSH="/usr/local/google/home/grouma/.oh-my-zsh"
+# Path to your oh-my-zsh installation.
+export ZSH=/usr/local/google/home/grouma/.oh-my-zsh
 
-  # Google3 PATHS
-  export PATH=/usr/local/google/home/grouma/.local/bin:${PATH}
-  export PATH=/usr/local/google/home/grouma/local/bin:${PATH}
-  export PATH=/usr/local/google/home/grouma/depot_tools:${PATH}
-  export PATH=/usr/local/google/home/grouma/flutter/bin:${PATH}
-  export PATH="${PATH}:/usr/local/google/home/grouma/Projects/depot_tools"
-
-  # Google3 Aliases
-  alias blaze-run='/google/src/head/depot/google3/devtools/blaze/scripts/blaze-run.sh'
-  alias copybara='/google/data/ro/teams/copybara/copybara'
-  alias show_platforms="blaze-bin/dart/tools/platforms/show_platforms"
-
-  # G4d completion
-  source /etc/bash_completion.d/g4d
-  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh  
-  
-  # Ignore files in CitC
-  export G4NOTHAVEFILTER='(\.iml|\.idea|compass\.rb)'
-else
-  # Path to oh-my-zsh installation.
-  export ZSH="/home/grouma/.oh-my-zsh"
-fi
-
-# Theme 
-ZSH_THEME="robbyrussell"
+# Set name of the theme to load.
+ZSH_THEME="kardan"
 
 # Load plugins
 plugins=(git history-substring-search tmux)
@@ -46,21 +21,45 @@ bindkey -M vicmd 'j' history-substring-search-down
 # Do not display remote git repositories
 zstyle :completion::complete:git-checkout:argument-rest:headrefs command "git for-each-ref --format='%(refname)' refs/heads 2>/dev/null"
 
-# Export Dart Path 
+# Ignore files in CitC
+export G4NOTHAVEFILTER='(\.iml|\.idea|compass\.rb)'
+
+# Export Path
 if [[ $PWD =~ "google3" ]]; then
-  export PATH=/usr/lib/google-dartlang/bin:${PATH}
+        export PATH=/usr/lib/google-dartlang/bin:${PATH}
 else
-  export PATH=/usr/local/google/home/grouma/dart-sdk/bin:${PATH}    
-  export PATH=/home/grouma/dart-sdk/bin:${PATH}
+        export PATH=/usr/local/google/home/grouma/dart-sdk/bin:${PATH}
 fi
 
-# Dart Aliases
-alias pbr="pub run build_runner"
+export PATH=/usr/local/google/home/grouma/.local/bin:${PATH}
+export PATH=/usr/local/google/home/grouma/local/bin:${PATH}
+export PATH=/usr/local/google/home/grouma/depot_tools:${PATH}
+export PATH="${PATH}:/usr/local/google/home/grouma/Projects/depot_tools"
+export PATH="$PATH":"$HOME/.pub-cache/bin"
+export PATH="$PATH:/usr/local/google/home/grouma/projects/flutter/bin"
 
 # Git Aliases
 alias gbr="git branch | grep -v "master" | xargs git branch -D"
 
+# Dart Aliases
+alias pbr="pub run build_runner"
+
 # Google3 Aliases
 alias blaze-run='/google/src/head/depot/google3/devtools/blaze/scripts/blaze-run.sh'
 alias copybara='/google/data/ro/teams/copybara/copybara'
-alias show_platforms="blaze-bin/dart/tools/platforms/show_platforms"
+alias show_required_libs="blaze-bin/dart/tools/required_libs/show_required_libs"
+alias launchpad='/google/data/ro/teams/ads-engprod/ap/tools/launchpad/launchpad_web.par'
+
+# Google3 history go/hi
+source /etc/bash.bashrc.d/shell_history_forwarder.sh
+
+# Google3 Completion
+source /etc/bash_completion.d/g4d
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+complete -F _blaze::complete_test_target_wrapper -o nospace dart-dev-runner
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
